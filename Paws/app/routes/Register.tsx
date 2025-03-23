@@ -9,7 +9,10 @@ import {
   ImageBackground,
 } from 'react-native';
 import { UserContext } from '../contextProviders/User';
-import { signUserWithGmail } from '../authFunctions/authentication';
+import {
+  registerUser,
+  signUserWithGmail,
+} from '../authFunctions/authentication';
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -26,13 +29,24 @@ export default function Register() {
     });
   };
 
-  const handleRegister = async () => {
+  const registerWithGmail = async () => {
     const signedUser = await signUserWithGmail();
 
     if (signedUser) {
       userContext?.setUser({
         email: signedUser?.email || '',
         username: signedUser?.displayName || '',
+      });
+      router.push('/routes/ChoosePlayer');
+    }
+  };
+
+  const registerWithCredentials = async () => {
+    const registeredUser = await registerUser(user.email, user.password);
+    if (registeredUser) {
+      userContext?.setUser({
+        email: registeredUser?.email || '',
+        username: '',
       });
       router.push('/routes/ChoosePlayer');
     }
@@ -60,9 +74,15 @@ export default function Register() {
             value={user.password}
             onChangeText={(text) => onChange('password', text)}
           />
-          <Text style={styles.heading}>Or</Text>
+          <TouchableOpacity
+            style={styles.arcadeButton}
+            onPress={registerWithCredentials}
+          >
+            <Text style={styles.buttonLabel}>Register</Text>
+          </TouchableOpacity>
+          <Text style={styles.text}>Or</Text>
           <View style={styles.buttonsContainer}>
-            <TouchableOpacity onPress={handleRegister}>
+            <TouchableOpacity onPress={registerWithGmail}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='30'
@@ -93,11 +113,17 @@ const styles = StyleSheet.create({
   },
 
   formContainer: {
-    width: '80%',
-    maxWidth: 400,
+    width: '40%',
     padding: 20,
-    backgroundColor: 'rgba(255,255,255,0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderColor: '#00FF00',
+    borderWidth: 2,
     borderRadius: 8,
+    shadowColor: '#00FF00',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 10,
     alignItems: 'center',
     fontSize: 20,
   },
@@ -113,31 +139,49 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   input: {
-    width: '100%',
+    width: '80%',
     height: 40,
+    borderColor: '#00FF00',
     borderWidth: 2,
     borderRadius: 5,
     paddingLeft: 10,
     marginBottom: 15,
     fontWeight: '600',
     fontSize: 20,
+    color: 'white',
   },
   buttonsContainer: {
     display: 'flex',
     flexDirection: 'row',
     gap: 50,
   },
-  heading: {
+  arcadeButton: {
+    marginTop: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+    borderWidth: 3,
+    borderColor: '#00FF00',
+    alignItems: 'center',
+    shadowColor: '#00FF00',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
+    elevation: 10,
+    borderRadius: 8,
+  },
+  buttonLabel: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  text: {
     fontSize: 24,
     fontWeight: 'bold',
-    borderBottomColor: 'black',
+    borderBottomColor: '#00FF00',
     borderBottomWidth: 2,
-    width: '80%',
+    width: '60%',
     textAlign: 'center',
-    marginVertical: 10,
-  },
-  buttonText: {
-    color: 'black',
-    fontWeight: 'bold',
+    marginVertical: 20,
+    color: 'white',
   },
 });

@@ -1,16 +1,15 @@
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   Animated,
   Image,
   ImageBackground,
   PanResponder,
-  Pressable,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import React from 'react';
 import { PickedPlayer } from '../interface/PickedPlayer';
+import React from 'react';
 import Obstacle from '@/components/obstacle/Obstacle';
 
 export default function Gameplay() {
@@ -18,8 +17,8 @@ export default function Gameplay() {
   const player: PickedPlayer = playerToken ? JSON.parse(playerToken) : '';
   const pan = useRef(
     new Animated.ValueXY({
-      x: 900,
-      y: 550,
+      x: 500,
+      y: 350,
     })
   ).current;
   const [score, setScore] = useState(0);

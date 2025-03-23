@@ -118,8 +118,6 @@ export default function Home() {
             </View>
           </View>
         </View>
-
-        <Obstacle />
       </ImageBackground>
     </View>
   );

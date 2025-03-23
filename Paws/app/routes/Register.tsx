@@ -34,7 +34,7 @@ export default function Register() {
         email: signedUser?.email || '',
         username: signedUser?.displayName || '',
       });
-      router.push('/routes/Home');
+      router.push('/routes/ChoosePlayer');
     }
   };
 

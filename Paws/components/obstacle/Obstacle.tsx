@@ -5,8 +5,6 @@ export default function Obstacle({ setScore }: any) {
   const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
     Dimensions.get('screen');
   const [obstacles, setObstacles] = useState<any[]>([]);
-  let currentObstacle: any = null;
-  const index = 0;
 
   const createObstacle = () => {
     const animatedValue = new Animated.Value(-900);

@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import User from './interface/User';
 import { PickedPlayer } from './interface/PickedPlayer';
 import { UserContext } from './contextProviders/User';
 import { PlayerContext } from './contextProviders/Player';
+import User from './interface/User';
 import Register from './routes/Register';
 import Gameplay from './routes/Gameplay';
-import Home from './routes/Home';
+import ChoosePlayer from './routes/ChoosePlayer';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,14 +21,23 @@ export default function App() {
           <Stack.Screen
             name='Register'
             component={Register}
+            options={{
+              headerShown: false,
+            }}
           />
           <Stack.Screen
-            name='Home'
-            component={Home}
+            name='ChoosePlayer'
+            component={ChoosePlayer}
+            options={{
+              headerShown: false,
+            }}
           />
           <Stack.Screen
             name='Gameplay'
             component={Gameplay}
+            options={{
+              headerShown: false,
+            }}
           />
         </Stack.Navigator>
       </PlayerContext.Provider>

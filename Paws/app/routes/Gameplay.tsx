@@ -11,10 +11,12 @@ import {
 import { PickedPlayer } from '../interface/PickedPlayer';
 import React from 'react';
 import Obstacle from '@/components/obstacle/Obstacle';
+import { useRoute } from '@react-navigation/native';
 
 export default function Gameplay() {
-  const playerToken = localStorage.getItem('Player');
-  const player: PickedPlayer = playerToken ? JSON.parse(playerToken) : '';
+  const route = useRoute();
+  const { background }: any = route.params || {};
+  const { player }: any = route.params || {};
   const pan = useRef(
     new Animated.ValueXY({
       x: 500,
@@ -35,7 +37,7 @@ export default function Gameplay() {
 
   return (
     <ImageBackground
-      source={require('@/assets/images/background.jpg')}
+      source={background}
       style={styles.backgroundImage}
     >
       <View>

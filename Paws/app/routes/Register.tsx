@@ -55,7 +55,7 @@ export default function Register() {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('@/assets/images/register-background.jpg')}
+        source={require('@/assets/images/backgrounds/main-background.jpg')}
         style={styles.background}
       >
         <Text style={styles.title}>Save Galaxy and earn points!</Text>

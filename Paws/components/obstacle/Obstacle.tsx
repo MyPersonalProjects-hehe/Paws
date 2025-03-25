@@ -69,7 +69,7 @@ export default function Obstacle({ setScore }: any) {
               width: 110,
               height: 110,
             }}
-            source={require('@/assets/images/planet-2.png')}
+            source={require('@/assets/images/obstacles/obstacle.png')}
           />
         </Animated.View>
       ))}

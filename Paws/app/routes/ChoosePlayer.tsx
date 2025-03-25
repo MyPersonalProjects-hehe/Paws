@@ -20,9 +20,9 @@ export default function Home() {
   });
   /**Keeping track of selection */
   const [selectedItems, setSelectedItems] = useState({
-    mode: require('@/assets/images/background.jpg'),
-    player: require('@/assets/images/Galaxy.png'),
-    weapon: require('@/assets/images/weapon-1.png'),
+    mode: require('@/assets/images/backgrounds/background.jpg'),
+    player: require('@/assets/images/players/Galaxy.png'),
+    weapon: require('@/assets/images/weapons/weapon-1.png'),
   });
   /**Toggle button color */
   const [isSelected, setIsSelected] = useState({
@@ -38,7 +38,7 @@ export default function Home() {
         { name: 'Deadly Points', value: 50 },
         { name: 'Can eat tuna fish for life', value: 75 },
       ],
-      img: require('@/assets/images/Galaxy.png'),
+      img: require('@/assets/images/players/Galaxy.png'),
     },
     {
       characterName: 'Rocket',
@@ -47,7 +47,7 @@ export default function Home() {
         { name: 'Deadly Points', value: 30 },
         { name: 'Healer', value: 70 },
       ],
-      img: require('@/assets/images/Rocket.png'),
+      img: require('@/assets/images/players/Rocket.png'),
     },
     {
       characterName: 'Mars',
@@ -56,7 +56,7 @@ export default function Home() {
         { name: 'Deadly Points', value: 70 },
         { name: 'Hates dogs', value: 60 },
       ],
-      img: require('@/assets/images/Mars.png'),
+      img: require('@/assets/images/players/Mars.png'),
     },
     {
       characterName: 'Vex',
@@ -65,34 +65,34 @@ export default function Home() {
         { name: 'Deadly points', value: 60 },
         { name: 'Charms', value: 90 },
       ],
-      img: require('@/assets/images/Vex.png'),
+      img: require('@/assets/images/players/Vex.png'),
     },
   ];
 
   const modes = [
     {
-      background: require('@/assets/images/background-2.jpg'),
+      background: require('@/assets/images/backgrounds/background-2.jpg'),
     },
     {
-      background: require('@/assets/images/background-3.jpg'),
+      background: require('@/assets/images/backgrounds/background-3.jpg'),
     },
     {
-      background: require('@/assets/images/background-4.jpg'),
+      background: require('@/assets/images/backgrounds/background-4.jpg'),
     },
     {
-      background: require('@/assets/images/background.jpg'),
+      background: require('@/assets/images/backgrounds/background.jpg'),
     },
   ];
 
   const weapons = [
     {
-      weapon: require('@/assets/images/weapon-1.png'),
+      weapon: require('@/assets/images/weapons/weapon-1.png'),
     },
     {
-      weapon: require('@/assets/images/weapon-2.png'),
+      weapon: require('@/assets/images/weapons/weapon-2.png'),
     },
     {
-      weapon: require('@/assets/images/weapon-3.png'),
+      weapon: require('@/assets/images/weapons/weapon-3.png'),
     },
   ];
 

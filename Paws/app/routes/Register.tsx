@@ -1,4 +1,3 @@
-import { useRouter } from 'expo-router';
 import { useContext, useState } from 'react';
 import {
   StyleSheet,
@@ -13,13 +12,14 @@ import {
   registerUser,
   signUserWithGmail,
 } from '../authFunctions/authentication';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Register() {
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
-  const router = useRouter();
+  const router = useNavigation<any>();
   const userContext = useContext(UserContext);
 
   const onChange = (key: any, input: string) => {
@@ -37,7 +37,7 @@ export default function Register() {
         email: signedUser?.email || '',
         username: signedUser?.displayName || '',
       });
-      router.push('/routes/ChoosePlayer');
+      router.navigate('ChoosePlayer');
     }
   };
 
@@ -48,7 +48,7 @@ export default function Register() {
         email: registeredUser?.email || '',
         username: '',
       });
-      router.push('/routes/ChoosePlayer');
+      router.navigate('/routes/ChoosePlayer');
     }
   };
 
@@ -60,7 +60,6 @@ export default function Register() {
       >
         <Text style={styles.title}>Save Galaxy and earn points!</Text>
         <View style={styles.formContainer}>
-          <Text style={styles.registerTitle}>Register</Text>
           <TextInput
             style={styles.input}
             placeholder='Email'
@@ -114,24 +113,16 @@ const styles = StyleSheet.create({
 
   formContainer: {
     width: '40%',
-    padding: 20,
+    paddingTop: 60,
+    paddingBottom: 40,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     borderColor: '#00FF00',
     borderWidth: 2,
     borderRadius: 8,
-    shadowColor: '#00FF00',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
-    elevation: 10,
     alignItems: 'center',
     fontSize: 20,
   },
-  registerTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
+
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -161,12 +152,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     borderWidth: 3,
     borderColor: '#00FF00',
+    boxShadow: '0px 0px 10px rgba(0, 255, 0, 0.9)',
     alignItems: 'center',
-    shadowColor: '#00FF00',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
-    elevation: 10,
     borderRadius: 8,
   },
   buttonLabel: {

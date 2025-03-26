@@ -172,7 +172,7 @@ export default function Home() {
         </Text>
         <Pressable
           style={[
-            styles.arcadeButton,
+            styles.button,
             {
               width: '20%',
               margin: 'auto',
@@ -219,7 +219,7 @@ export default function Home() {
               />
               <Pressable
                 style={[
-                  styles.arcadeButton,
+                  styles.button,
                   isSelected.playerSelected && {
                     backgroundColor: '#00FF00',
                   },
@@ -238,7 +238,7 @@ export default function Home() {
                 </Text>
               </Pressable>
               <Pressable
-                style={styles.arcadeButton}
+                style={styles.button}
                 onPress={changePlayer}
               >
                 <Text style={styles.buttonText}>Next Player</Text>
@@ -256,14 +256,14 @@ export default function Home() {
                 />
               </View>
               <Pressable
-                style={styles.arcadeButton}
+                style={styles.button}
                 onPress={changeWeapon}
               >
                 <Text style={styles.buttonText}>Next Weapon</Text>
               </Pressable>
               <Pressable
                 style={[
-                  styles.arcadeButton,
+                  styles.button,
                   isSelected.weaponSelected && {
                     backgroundColor: '#00FF00',
                   },
@@ -291,13 +291,13 @@ export default function Home() {
                 />
               </View>
               <Pressable
-                style={styles.arcadeButton}
+                style={styles.button}
                 onPress={ChangeMode}
               >
                 <Text style={styles.buttonText}>Next</Text>
               </Pressable>
               <Pressable
-                style={styles.arcadeButton}
+                style={styles.button}
                 onPress={() =>
                   setSelectedItems((prev) => ({
                     ...prev,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     height: 250,
     marginBottom: 20,
   },
-  arcadeButton: {
+  button: {
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderWidth: 3,
@@ -399,8 +399,9 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   buttonText: {
-    fontSize: 15,
     color: 'white',
+    fontSize: 20,
+    fontWeight: 600,
     textAlign: 'center',
   },
   backgroundImage: {

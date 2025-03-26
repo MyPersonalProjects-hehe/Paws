@@ -87,10 +87,7 @@ const styles = StyleSheet.create({
     color: '#00FF00',
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     textAlign: 'center',
-    shadowColor: '#00FF00',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
+    boxShadow: '0px 0px 10px rgba(0, 255, 0, 0.9)',
     elevation: 10,
   },
 });

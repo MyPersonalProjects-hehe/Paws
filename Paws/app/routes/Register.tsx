@@ -37,7 +37,7 @@ export default function Register() {
         email: signedUser?.email || '',
         username: signedUser?.displayName || '',
       });
-      router.navigate('ChoosePlayer');
+      router.navigate('CreateProfile');
     }
   };
 
@@ -48,7 +48,7 @@ export default function Register() {
         email: registeredUser?.email || '',
         username: '',
       });
-      router.navigate('/routes/ChoosePlayer');
+      router.navigate('CreateProfile');
     }
   };
 
@@ -74,12 +74,12 @@ export default function Register() {
             onChangeText={(text) => onChange('password', text)}
           />
           <TouchableOpacity
-            style={styles.arcadeButton}
+            style={styles.button}
             onPress={registerWithCredentials}
           >
             <Text style={styles.buttonLabel}>Register</Text>
           </TouchableOpacity>
-          <Text style={styles.text}>Or</Text>
+          <Text style={styles.buttonText}>Or</Text>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity onPress={registerWithGmail}>
               <svg
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 50,
   },
-  arcadeButton: {
+  button: {
     marginTop: 20,
     paddingVertical: 15,
     paddingHorizontal: 60,
@@ -156,12 +156,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
   },
-  buttonLabel: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '600',
-  },
-  text: {
+  buttonText: {
     fontSize: 24,
     fontWeight: 'bold',
     borderBottomColor: '#00FF00',
@@ -170,5 +165,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 20,
     color: 'white',
+  },
+  buttonLabel: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600',
   },
 });

@@ -1,7 +1,9 @@
 import express, { json } from 'express';
 import cors from 'cors';
-import { db } from './connection/connection.js';
+import createProfile from './routes/create-profile.js';
+import { config } from 'dotenv';
 
+config();
 const app = express();
 app.use(json());
 app.use(
@@ -10,13 +12,8 @@ app.use(
   })
 );
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('port running');
 });
 
-app.get('/test', async (req, res) => {
-  const collection = await db.collection('users').find({}).toArray();
-  console.log(collection, 'hehe');
-
-  // res.status(200).send({ message: collection });
-});
+app.use('/api', createProfile);

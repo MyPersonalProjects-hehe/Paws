@@ -11,18 +11,12 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-export default function Home() {
+export default function ChoosePlayer() {
   /**Keeping track of rotation*/
   const [indexes, setIndexes] = useState({
     playerIndex: 0,
     modeIndex: 0,
     weaponIndex: 0,
-  });
-  /**Keeping track of selection */
-  const [selectedItems, setSelectedItems] = useState({
-    mode: require('@/assets/images/backgrounds/background.jpg'),
-    player: require('@/assets/images/players/Galaxy.png'),
-    weapon: require('@/assets/images/weapons/weapon-1.png'),
   });
   /**Toggle button color */
   const [isSelected, setIsSelected] = useState({
@@ -68,6 +62,13 @@ export default function Home() {
       img: require('@/assets/images/players/Vex.png'),
     },
   ];
+
+  /**Keeping track of selection */
+  const [selectedItems, setSelectedItems] = useState({
+    mode: require('@/assets/images/backgrounds/background.jpg'),
+    player: players[0],
+    weapon: require('@/assets/images/weapons/weapon-1.png'),
+  });
 
   const modes = [
     {

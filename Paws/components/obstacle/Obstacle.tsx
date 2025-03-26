@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Image } from 'react-native';
 
 export default function Obstacle({ setScore }: any) {
+  /**Timer IDs */
+  let easy = useRef<any>(null);
+  let medium = useRef<any>(null);
+  let hard = useRef<any>(null);
   const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } =
     Dimensions.get('screen');
   const [obstacles, setObstacles] = useState<any[]>([]);
@@ -27,31 +31,31 @@ export default function Obstacle({ setScore }: any) {
     ]);
   };
 
-  // useEffect(() => {
-  //   // First interval: spawn every 2 seconds
-  //   const intervalSlow = setInterval(() => {
-  //     createObstacle();
-  //   }, 2000);
+  useEffect(() => {
+    /**First interval */
+    easy.current = setInterval(() => {
+      createObstacle();
+    }, 2000);
 
-  //   // After 2 minutes, stop slow interval and start faster one
-  //   const switchToFastSpawn = setTimeout(() => {
-  //     clearInterval(intervalSlow); // Stop the slow one
+    /**Clear previous and start new one  */
+    setTimeout(() => {
+      clearInterval(easy.current);
+      medium.current = setInterval(() => {
+        createObstacle();
+      }, 1500);
+    }, 9000);
 
-  //     // Start fast interval: spawn every 1 second
-  //     const intervalFast = setInterval(() => {
-  //       createObstacle();
-  //     }, 600);
+    setTimeout(() => {
+      clearInterval(medium.current);
+      hard.current = setInterval(() => {
+        createObstacle();
+      }, 1000);
+    }, 20000);
 
-  //     // Clean up fast interval when component unmounts
-  //     return () => clearInterval(intervalFast);
-  //   }, 10000); // 2 minutes = 120000 ms
-
-  //   // Clean up everything when component unmounts
-  //   return () => {
-  //     clearInterval(intervalSlow);
-  //     // clearTimeout(switchToFastSpawn);
-  //   };
-  // }, []);
+    setTimeout(() => {
+      clearInterval(hard.current);
+    }, 35000);
+  }, []);
 
   return (
     <>

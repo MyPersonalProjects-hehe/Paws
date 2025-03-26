@@ -7,6 +7,7 @@ import User from './interface/User';
 import Register from './routes/Register';
 import Gameplay from './routes/Gameplay';
 import ChoosePlayer from './routes/ChoosePlayer';
+import CreateProfile from './routes/CreateProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,13 @@ export default function App() {
           <Stack.Screen
             name='ChoosePlayer'
             component={ChoosePlayer}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name='CreateProfile'
+            component={CreateProfile}
             options={{
               headerShown: false,
             }}

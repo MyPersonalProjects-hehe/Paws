@@ -22,6 +22,7 @@ export default function CreateProfile() {
   });
 
   const [imageIndex, setImageIndex] = useState(0);
+  /**Toggle button color */
   const [isSelected, setIsSelected] = useState(false);
 
   const avatar = [
@@ -51,11 +52,17 @@ export default function CreateProfile() {
 
   const submitForm = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:3000/api/createProfile',
-        profileInfo
-      );
-      response.status === 200 ? route.navigate('ChoosePlayer') : alert('Error');
+      if (profileInfo.username) {
+        const response = await axios.post(
+          'http://localhost:3000/api/createProfile',
+          profileInfo
+        );
+        response.status === 200
+          ? route.navigate('ChoosePlayer')
+          : alert('Error');
+      } else {
+        alert('Please fill in at least username!');
+      }
     } catch (error) {
       console.log(error);
     }
@@ -180,10 +187,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     borderWidth: 3,
     borderColor: '#00FF00',
-    shadowColor: '#00FF00',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
-    shadowRadius: 10,
+    boxShadow: '0px 0px 10px rgba(0, 255, 0, 0.9)',
     alignItems: 'center',
     borderRadius: 8,
   },

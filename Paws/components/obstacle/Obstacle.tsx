@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, Image } from 'react-native';
+import {
+  Animated,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
-export default function Obstacle({ setScore }: any) {
+export default function Obstacle() {
+  const [score, setScore] = useState(0);
+
   /**Timer IDs */
   let easy = useRef<any>(null);
   let medium = useRef<any>(null);
@@ -15,7 +24,7 @@ export default function Obstacle({ setScore }: any) {
     const leftPosition = Math.random() * (SCREEN_WIDTH - 110);
     const id = Date.now() + Math.random();
 
-    // Animate down to bottom of screen
+    /*Animate down to bottom of screen*/
     Animated.timing(animatedValue, {
       toValue: SCREEN_HEIGHT + 1700,
       duration: 4000,
@@ -43,22 +52,25 @@ export default function Obstacle({ setScore }: any) {
       medium.current = setInterval(() => {
         createObstacle();
       }, 1500);
-    }, 9000);
+    }, 15000);
 
     setTimeout(() => {
       clearInterval(medium.current);
       hard.current = setInterval(() => {
         createObstacle();
       }, 1000);
-    }, 20000);
+    }, 30000);
 
     setTimeout(() => {
       clearInterval(hard.current);
-    }, 35000);
+    }, 40000);
   }, []);
 
   return (
     <>
+      <View>
+        <Text style={styles.score}>Whiskas Points {score}</Text>
+      </View>
       {obstacles.map((obstacle, index) => (
         <Animated.View
           key={index}
@@ -80,3 +92,25 @@ export default function Obstacle({ setScore }: any) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  score: {
+    position: 'absolute',
+    top: -250,
+    alignContent: 'center',
+    width: 500,
+    height: 100,
+    borderWidth: 2,
+    borderColor: '#00FF00',
+    borderRadius: 8,
+    marginTop: 20,
+    marginLeft: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#00FF00',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    textAlign: 'center',
+    boxShadow: '0px 0px 10px rgba(0, 255, 0, 0.9)',
+    elevation: 10,
+  },
+});
